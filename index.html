@@ -29,13 +29,27 @@
 		/* STEP 5: Open a new request using the open() method */
 		request.open('GET',requestURL);
 		/* STEP 6: Set JavaScript to accept JSON from the server */
-
+		request.responseType = 'json';
 		/* STEP 7: Send the request with the send() method */
-
+		request.send()
 		/* STEP 8: Add an event handler that listens for the onload event of the JSON file/object */
-
+		request.onload = function () {
+			var iScreamInc = request.response;
+			console.log(iScreamInc);
+			// populateHeader();
+			// showTopFlavors();
+		}
 		/* STEP 9: Build out the populateHeader() function */
-
+		function populateHeader() {
+			// Grab the company name
+			var headerH1 = document.createElement('h1');
+			headerh1.textContent = jsonObj.companyName;
+			header.appendChild(headerH1);
+			// Grab the company location & established date
+			var headerPara = document.createElement('p');
+			headerPara.textContent = 'Head Office ' + jsonObj['headOffice'] + 'Established ' + jsonObj['established'];
+			header.appendChild(headerH1);
+		}
 		/* STEP 10a: Assemble the showTopFlavors() function */
 
 			// STEP 10b: Bind the JSON topFlavors object to a var
